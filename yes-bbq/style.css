@@ -273,3 +273,108 @@ button:hover {
     background-color: #fdcc03;
     color: #000;
 }
+
+/* Basic cart modal styling */
+.cart-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+}
+
+.cart-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    color: #333333;
+}
+
+.cart-content h2 {
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #222222;
+}
+
+.cart-content button {
+    padding: 12px 24px;
+    margin: 15px 10px 0 0;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cart-content button:first-of-type {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.cart-content button:last-of-type {
+    background-color: #ecf0f1;
+    color: #333333;
+}
+
+.cart-content button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-content button:first-of-type:hover {
+    background-color: #c0392b;
+}
+
+.cart-content button:last-of-type:hover {
+    background-color: #bdc3c7;
+}
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#cart-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+#cart-items li button {
+    padding: 6px 12px;
+    margin: 0;
+    background-color: transparent;
+    color: #e74c3c;
+    font-size: 0.9em;
+}
+
+#cart-items li button:hover {
+    background-color: #f8f8f8;
+    box-shadow: none;
+    transform: none;
+}
+
+#cart-total {
+    font-size: 1.2em;
+    font-weight: 600;
+    text-align: right;
+    padding: 15px 0;
+    border-top: 2px solid #eaeaea;
+}

@@ -17,7 +17,8 @@
                 <ul>
                     <li><a onclick="home()">Home</a></li>
                     <li><a onclick="contact()">Contacts</a></li>
-                    <li><a class="Ordering" onclick="menu()">Check Menu</a></li>
+                    <li><a onclick="menu()">Check Menu</a></li>
+                    <li><a class="Ordering"onclick="viewCart()" class="cart-icon">Cart (<span id="cart-count">0</span>)</a></li>
                 </ul>
             </nav>
         </nav>
@@ -33,7 +34,7 @@
                                 <div class="layer">
                                     <h3>YES WITH JAVA RICE</h3>
                                     <p>P 95.00</p>
-                                    <button  onclick="">Order Now</button>
+                                    <button  onclick="addToCart(1)">Order Now</button>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +44,7 @@
                                 <div class="layer">
                                     <h3>YES NA YES W/ JAVA RICE</h3>
                                     <p>P 139.00</p>
-                                    <button  onclick="">Order Now</button>
+                                    <button  onclick="addToCart(2)">Order Now</button>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +54,7 @@
                                 <div class="layer">
                                     <h3>YES + HOTDOG W/ JAVA RICE</h3>
                                     <p>P 129.00</p>
-                                    <button  onclick="">Order Now</button>
+                                    <button  onclick="addToCart(3)">Order Now</button>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +64,7 @@
                                 <div class="layer">
                                     <h3>YES + TENGA W/ JAVA RICE</h3>
                                     <p>P 129.00</p>
-                                    <button  onclick="">Order Now</button>
+                                    <button  onclick="addToCart(4)">Order Now</button>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +74,7 @@
                                 <div class="layer">
                                     <h3>YES + ISAW BABOY W/ JAVA RICE</h3>
                                     <p>P 129.00</p>
-                                    <button  onclick="">Order Now</button>
+                                    <button  onclick="addToCart(5)">Order Now</button>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +84,7 @@
                                 <div class="layer">
                                     <h3>YES + ISAW MANOK W/ JAVA RICE</h3>
                                     <p>P 129.00</p>
-                                    <button  onclick="">Order Now</button>
+                                    <button  onclick="addToCart(6)">Order Now</button>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +94,7 @@
                                 <div class="layer">
                                     <h3>YES W/ FRIENDS</h3>
                                     <p>P 235.00</p>
-                                    <button  onclick="">Order Now</button>
+                                    <button  onclick="addToCart(6)">Order Now</button>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +104,7 @@
                                 <div class="layer">
                                     <h3>INIHAW NA LIEMPO W/ JAVA RICE</h3>
                                     <p>P 229.00</p>
-                                    <button  onclick="">Order Now</button>
+                                    <button  onclick="addToCart(7)">Order Now</button>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +114,7 @@
                                 <div class="layer">
                                     <h3>CHICKEN BBQ (LEG QUARTER) W/ JAVA RICE</h3>
                                     <p>P 175.00</p>
-                                    <button  onclick="">Order Now</button>
+                                    <button  onclick="addToCart(8)">Order Now</button>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +124,7 @@
                                 <div class="layer">
                                     <h3>INIHAW NA PORKCHOP W/ JAVA RICE</h3>
                                     <p>P 125.00</p>
-                                    <button  onclick="">Order Now</button>
+                                    <button  onclick="addToCart(9)">Order Now</button>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +134,7 @@
                                 <div class="layer">
                                     <h3>YES + ISAW BILOG W/ JAVA RICE</h3>
                                     <p>P 135.00</p>
-                                    <button  onclick="">Order Now</button>
+                                    <button  onclick="addToCart(10)">Order Now</button>
                                 </div>
                             </div>
                         </div>
@@ -143,12 +144,21 @@
                                 <div class="layer">
                                     <h3>YES + BULAKLAK W/ JAVA RICE</h3>
                                     <p>P 129.00</p>
-                                    <button  onclick="">Order Now</button>
+                                    <button  onclick="addToCart(11)">Order Now</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div id="cart-modal" class="cart-modal" style="display: none;">
+            <div class="cart-content">
+                <h2>Your Cart</h2>
+                <ul id="cart-items"></ul>
+                <p id="cart-total">Total: P0.00</p>
+                <button onclick="checkout()">Checkout</button>
+                <button onclick="closeCart()">Close</button>
             </div>
         </div>
     </body>

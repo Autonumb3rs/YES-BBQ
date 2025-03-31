@@ -1,15 +1,4 @@
-function home() {
-    window.location.href = "index.html";
-}
-
-function menu() {
-    window.location.href = "menu.html";
-}
-
-function contact() {
-    window.location.href = "contacts.html";
-}
-
+// Sample menu data
 const menuItems = [
     {
         name: "YES WITH JAVA RICE",
@@ -73,28 +62,110 @@ const menuItems = [
     }
 ];
 
-function order(item) {
-    alert(`You have ordered: ${item.name}\nPrice: ${item.price}`);
+let cart = []; // Cart to store items added to cart
+
+// Add item to cart
+function addToCart(index) {
+    const item = menuItems[index];
+    cart.push(item); // Add item to the cart
+    updateCartCount(); // Update cart count in the header
+    alert(`Added ${item.name} to cart!`); // Give feedback to user
 }
 
+// Update the cart count in the header
+function updateCartCount() {
+    document.getElementById("cart-count").innerText = cart.length;
+}
+
+// Update cart view in the modal
+function updateCartView() {
+    const cartItemsList = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+
+    // Clear current cart content
+    cartItemsList.innerHTML = '';
+
+    let total = 0;
+    cart.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `${item.name} - ${item.price} <button onclick="removeFromCart(${index})">Remove</button>`;
+        cartItemsList.appendChild(li);
+
+        // Calculate total price (remove 'P' and convert to number)
+        const price = parseFloat(item.price.replace('P', '').trim());
+        total += price;
+    });
+
+    cartTotal.innerText = `Total: P${total.toFixed(2)}`;
+}
+
+// Remove item from cart
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartCount();
+    updateCartView();
+}
+
+// View Cart - Open the cart modal and display cart items
+function viewCart() {
+    const cartModal = document.getElementById("cart-modal");
+    updateCartView();
+    cartModal.style.display = "flex";
+}
+
+// Close Cart
+function closeCart() {
+    const cartModal = document.getElementById("cart-modal");
+    cartModal.style.display = "none";
+}
+
+// Checkout function
+function checkout() {
+    if (cart.length > 0) {
+        alert("Proceeding to checkout...");
+        // Implement further checkout logic here (like payment gateway)
+        cart = []; // Clear cart after checkout
+        updateCartCount();
+        closeCart();
+    } else {
+        alert("Your cart is empty!");
+    }
+}
+
+// Dynamically load the menu items
 document.addEventListener("DOMContentLoaded", function () {
     const menuContainer = document.querySelector(".menu-list");
-    menuItems.forEach(item => {
-        const foodItem = document.createElement("div");
-        foodItem.classList.add("food");
-
-        foodItem.innerHTML = `
-            <div id="box-container">
-                <div class="food">
-                    <img src="${item.image}" alt="${item.name}">
-                    <div class="layer">
-                        <h3>${item.name}</h3>
-                        <p>${item.price}</p>
-                        <button onclick="order(${JSON.stringify(item)})">Order Now</button>
-                    </div>
+    
+    // Clear any existing content
+    menuContainer.innerHTML = '';
+    
+    menuItems.forEach((item, index) => {
+        const boxContainer = document.createElement("div");
+        boxContainer.id = "box-container";
+        
+        boxContainer.innerHTML = `
+            <div class="food">
+                <img src="${item.image}" alt="${item.name}">
+                <div class="layer">
+                    <h3>${item.name}</h3>
+                    <p>${item.price}</p>
+                    <button onclick="addToCart(${index})">Order Now</button>
                 </div>
             </div>
         `;
-        menuContainer.appendChild(foodItem);
+        menuContainer.appendChild(boxContainer);
     });
 });
+
+// Navigation functions
+function home() {
+    window.location.href = "index.html";
+}
+
+function menu() {
+    window.location.href = "menu.html";
+}
+
+function contact() {
+    window.location.href = "contacts.html";
+}
